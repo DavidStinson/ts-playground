@@ -14,7 +14,6 @@ var logIt = function (str) {
 };
 var firstMeal;
 firstMeal = { entree: 'Waffle', dessert: 'Too much syrup' };
-console.log(firstMeal.drink);
 var secondMeal;
 secondMeal = { entree: 'Hot Pocket', dessert: 'Cheesecake' };
 var drink = 'drink';
@@ -42,4 +41,67 @@ var meals = [
     thirdMeal,
 ];
 meals.push(fourthMeal);
-meals.forEach(function (meal) { return printMeal(meal); });
+var myArray = [];
+var greatCoffee = {
+    brand: 'Onyx',
+    variety: 'Geometry',
+    isTasty: true
+};
+var mehCoffee = {
+    brand: 'Green Mountain',
+    variety: 'Half-caff K-Cup',
+    isTasty: false
+};
+var greatCoffeeTuple;
+greatCoffeeTuple = ['Onyx', 'Geometry', true];
+var mehCoffeeTuple = ['Green Mountain', 'Half-caff K-Cup', false];
+var myLicenseId;
+myLicenseId = 'k7981741';
+renewLicense(myLicenseId); // OK
+myLicenseId = 59298114;
+renewLicense(myLicenseId); // OK
+// Error: Argument of type 'boolean' is not assignable to parameter of 
+// type 'string | number'.
+function renewLicense(licenseId) {
+    if (typeof licenseId === "string") {
+        licenseId = licenseId.toUpperCase();
+    }
+    console.log("License #".concat(licenseId, " has been renewed"));
+}
+var numBoolArr = [false, 1, 3, true, 5];
+var theLetterH = "H";
+var zero = 0;
+var PossibleDuckColors;
+(function (PossibleDuckColors) {
+    PossibleDuckColors["Purple"] = "Purple";
+    PossibleDuckColors["Pink"] = "Pink";
+    PossibleDuckColors["Green"] = "Green";
+    PossibleDuckColors["Blue"] = "Blue";
+})(PossibleDuckColors || (PossibleDuckColors = {}));
+var purpleDuck = {
+    isFavorite: true,
+    color: PossibleDuckColors.Purple
+};
+console.log(purpleDuck);
+var Roles;
+(function (Roles) {
+    Roles[Roles["NewUser"] = 50] = "NewUser";
+    Roles[Roles["Student"] = 100] = "Student";
+    Roles[Roles["TA"] = 200] = "TA";
+    Roles[Roles["IA"] = 400] = "IA";
+    Roles[Roles["Instructor"] = 700] = "Instructor";
+    Roles[Roles["Admin"] = 900] = "Admin";
+})(Roles || (Roles = {}));
+var myRole = 900;
+function checkAdmin(role) {
+    if (role >= Roles.Admin) {
+        console.log("Welcome, admin.");
+    }
+    else {
+        console.log("Whatchu want, pleb?");
+    }
+}
+checkAdmin(myRole);
+var newUserRole = Roles.NewUser;
+console.log(newUserRole);
+checkAdmin(newUserRole);
