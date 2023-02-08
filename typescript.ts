@@ -43,12 +43,14 @@ function printMeal({ entree, dessert, drink }: Meal): void {
   if (drink) console.log(`Oh and my ${drink} too!`)
 }
 
-type Meal = {
+interface Meal {
   entree: string;
   dessert: string;
   drink?: string;
+  price?: string | number;
+}
 
-
+interface Meal {
   price?: string | number;
 }
 
@@ -98,7 +100,9 @@ renewLicense(myLicenseId) // OK
 
 
 function renewLicense(licenseId: string | number): void {
-  if (typeof licenseId === "string") {
+  if (typeof licenseId === 'string') {
+
+
     licenseId = licenseId.toUpperCase()
   }
   console.log(`License #${licenseId} has been renewed`)
@@ -155,3 +159,77 @@ const newUserRole = Roles.NewUser
 console.log(newUserRole)
 
 checkAdmin(newUserRole)
+
+
+interface Emote {
+  speak: () => string
+}
+
+interface Dog extends Emote {
+  readonly name: string;
+  favToy?: string;
+  age: number;
+  walk: (distance: number) => void;
+}
+
+const myDog: Dog = {
+  name: 'Cooper',
+  age: 7,
+  speak: function ():string {
+    return "bark!"
+  },
+  walk: function (distance: number): void {
+    console.log(`You walked ${this.name} ${distance} mile(s)!`)
+  }
+}
+
+const printSpeech = (entity: Emote): void => {
+  console.log(entity.speak())
+}
+
+interface TalkingToy extends Emote {
+  isFuzzy: boolean;
+}
+
+interface Person extends Emote {
+  hairColor: string
+}
+
+interface Instructor extends Person {
+  favoriteUnit: 1 | 2 | 3 | 4
+}
+
+const woody: TalkingToy = {
+  isFuzzy: false,
+  speak: function (): string {
+    return "There's a snake in my boot!"
+  },
+}
+
+const furby: TalkingToy = {
+  isFuzzy: false,
+  speak: function (): string {
+    return "You feed me, blehaha blehaha."
+  },
+}
+
+const taylorSwift: Person = {
+  hairColor: "blonde",
+  speak: function (): string {
+    return "Shake it off!"
+  },
+}
+
+const ben: Instructor = {
+  hairColor: "Salt-n-Pepper",
+  favoriteUnit: 2,
+  speak: function (): string {
+    return "Eeee-yaaaaaaaa *this is the sound of a tarantula bat*"
+  }
+}
+
+printSpeech(myDog)
+printSpeech(taylorSwift)
+printSpeech(woody)
+printSpeech(furby)
+printSpeech(ben)

@@ -63,7 +63,7 @@ renewLicense(myLicenseId); // OK
 // Error: Argument of type 'boolean' is not assignable to parameter of 
 // type 'string | number'.
 function renewLicense(licenseId) {
-    if (typeof licenseId === "string") {
+    if (typeof licenseId === 'string') {
         licenseId = licenseId.toUpperCase();
     }
     console.log("License #".concat(licenseId, " has been renewed"));
@@ -105,3 +105,46 @@ checkAdmin(myRole);
 var newUserRole = Roles.NewUser;
 console.log(newUserRole);
 checkAdmin(newUserRole);
+var myDog = {
+    name: 'Cooper',
+    age: 7,
+    speak: function () {
+        return "bark!";
+    },
+    walk: function (distance) {
+        console.log("You walked ".concat(this.name, " ").concat(distance, " mile(s)!"));
+    }
+};
+var printSpeech = function (entity) {
+    console.log(entity.speak());
+};
+var woody = {
+    isFuzzy: false,
+    speak: function () {
+        return "There's a snake in my boot!";
+    }
+};
+var furby = {
+    isFuzzy: false,
+    speak: function () {
+        return "You feed me, blehaha blehaha.";
+    }
+};
+var taylorSwift = {
+    hairColor: "blonde",
+    speak: function () {
+        return "Shake it off!";
+    }
+};
+var ben = {
+    hairColor: "Salt-n-Pepper",
+    favoriteUnit: 2,
+    speak: function () {
+        return "Eeee-yaaaaaaaa *this is the sound of a tarantula bat*";
+    }
+};
+printSpeech(myDog);
+printSpeech(taylorSwift);
+printSpeech(woody);
+printSpeech(furby);
+printSpeech(ben);
