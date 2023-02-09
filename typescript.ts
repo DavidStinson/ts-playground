@@ -44,14 +44,14 @@ function printMeal({ entree, dessert, drink }: Meal): void {
 }
 
 interface Meal {
-  entree: string;
-  dessert: string;
-  drink?: string;
-  price?: string | number;
+  entree: string
+  dessert: string
+  drink?: string
+  price?: string | number
 }
 
 interface Meal {
-  price?: string | number;
+  price?: string | number
 }
 
 const poptartFlavors = ['Smores', 'Wild Berry', 'Strawberry']
@@ -67,7 +67,6 @@ const meals: { entree: string; dessert: string; drink?: string }[] = [
 meals.push(fourthMeal)
 
 const myArray = []
-
 
 const greatCoffee = {
   brand: 'Onyx',
@@ -93,45 +92,41 @@ let myLicenseId: string | number
 
 myLicenseId = 'k7981741'
 renewLicense(myLicenseId) // OK
-myLicenseId =  59298114
+myLicenseId = 59298114
 renewLicense(myLicenseId) // OK
-// Error: Argument of type 'boolean' is not assignable to parameter of 
+// Error: Argument of type 'boolean' is not assignable to parameter of
 // type 'string | number'.
-
 
 function renewLicense(licenseId: string | number): void {
   if (typeof licenseId === 'string') {
-
-
     licenseId = licenseId.toUpperCase()
   }
   console.log(`License #${licenseId} has been renewed`)
 }
 
-const numBoolArr: ( boolean | number )[] = [false, 1, 3, true, 5]
+const numBoolArr: (boolean | number)[] = [false, 1, 3, true, 5]
 
-const theLetterH: "H" = "H"
+const theLetterH: 'H' = 'H'
 const zero: 0 = 0
 
 enum PossibleDuckColors {
-  Purple = "Purple",
-  Pink = "Pink",
-  Green = "Green",
-  Blue = "Blue",
+  Purple = 'Purple',
+  Pink = 'Pink',
+  Green = 'Green',
+  Blue = 'Blue',
 }
 
 type DuckDogToy = {
-  isFavorite: boolean;
-  color: PossibleDuckColors;
+  isFavorite: boolean
+  color: PossibleDuckColors
 }
 
-const purpleDuck: DuckDogToy = { 
-  isFavorite: true, 
-  color: PossibleDuckColors.Purple
+const purpleDuck: DuckDogToy = {
+  isFavorite: true,
+  color: PossibleDuckColors.Purple,
 }
 
 console.log(purpleDuck)
-
 
 enum Roles {
   NewUser = 50,
@@ -146,9 +141,9 @@ const myRole = 900
 
 function checkAdmin(role: number): void {
   if (role >= Roles.Admin) {
-    console.log("Welcome, admin.")
+    console.log('Welcome, admin.')
   } else {
-    console.log("Whatchu want, pleb?");
+    console.log('Whatchu want, pleb?')
   }
 }
 
@@ -160,27 +155,26 @@ console.log(newUserRole)
 
 checkAdmin(newUserRole)
 
-
 interface Emote {
   speak: () => string
 }
 
 interface Dog extends Emote {
-  readonly name: string;
-  favToy?: string;
-  age: number;
-  walk: (distance: number) => void;
+  readonly name: string
+  favToy?: string
+  age: number
+  walk: (distance: number) => void
 }
 
 const myDog: Dog = {
   name: 'Cooper',
   age: 7,
-  speak: function ():string {
-    return "bark!"
+  speak: function (): string {
+    return 'bark!'
   },
   walk: function (distance: number): void {
     console.log(`You walked ${this.name} ${distance} mile(s)!`)
-  }
+  },
 }
 
 const printSpeech = (entity: Emote): void => {
@@ -188,7 +182,7 @@ const printSpeech = (entity: Emote): void => {
 }
 
 interface TalkingToy extends Emote {
-  isFuzzy: boolean;
+  isFuzzy: boolean
 }
 
 interface Person extends Emote {
@@ -209,23 +203,23 @@ const woody: TalkingToy = {
 const furby: TalkingToy = {
   isFuzzy: false,
   speak: function (): string {
-    return "You feed me, blehaha blehaha."
+    return 'You feed me, blehaha blehaha.'
   },
 }
 
 const taylorSwift: Person = {
-  hairColor: "blonde",
+  hairColor: 'blonde',
   speak: function (): string {
-    return "Shake it off!"
+    return 'Shake it off!'
   },
 }
 
 const ben: Instructor = {
-  hairColor: "Salt-n-Pepper",
+  hairColor: 'Salt-n-Pepper',
   favoriteUnit: 2,
   speak: function (): string {
-    return "Eeee-yaaaaaaaa *this is the sound of a tarantula bat*"
-  }
+    return 'Eeee-yaaaaaaaa *this is the sound of a tarantula bat*'
+  },
 }
 
 printSpeech(myDog)
@@ -233,3 +227,37 @@ printSpeech(taylorSwift)
 printSpeech(woody)
 printSpeech(furby)
 printSpeech(ben)
+
+class Cat {
+	constructor(public name: string, public age: number) {}
+
+  describe(): string {
+		return `This is ${this.name}, they are ${this.age} years old.`
+  }
+
+	createdAt = new Date();
+}
+
+class Kitten extends Cat {
+  constructor(name: string, age: number, public favToy: string) {
+    super(name, age)
+  }
+
+  describe(): string {
+		return super.describe() + ` Their favorite toy is a ${this.favToy}.`
+  }
+}
+
+// class Kitten extends Cat {
+// 	constructor(name: string, age: number, favToy: string) {
+// 		super(name, age)
+//     this.favToy = favToy
+// 	}
+//   public favToy: string
+// }
+
+let kitten = new Kitten('Xbox', 1, 'string')
+
+console.log(kitten)
+console.log(kitten.describe());
+

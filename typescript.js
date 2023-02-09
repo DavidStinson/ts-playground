@@ -1,3 +1,18 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 /**
  * Returns the product of two numbers
  *
@@ -60,7 +75,7 @@ myLicenseId = 'k7981741';
 renewLicense(myLicenseId); // OK
 myLicenseId = 59298114;
 renewLicense(myLicenseId); // OK
-// Error: Argument of type 'boolean' is not assignable to parameter of 
+// Error: Argument of type 'boolean' is not assignable to parameter of
 // type 'string | number'.
 function renewLicense(licenseId) {
     if (typeof licenseId === 'string') {
@@ -69,7 +84,7 @@ function renewLicense(licenseId) {
     console.log("License #".concat(licenseId, " has been renewed"));
 }
 var numBoolArr = [false, 1, 3, true, 5];
-var theLetterH = "H";
+var theLetterH = 'H';
 var zero = 0;
 var PossibleDuckColors;
 (function (PossibleDuckColors) {
@@ -95,10 +110,10 @@ var Roles;
 var myRole = 900;
 function checkAdmin(role) {
     if (role >= Roles.Admin) {
-        console.log("Welcome, admin.");
+        console.log('Welcome, admin.');
     }
     else {
-        console.log("Whatchu want, pleb?");
+        console.log('Whatchu want, pleb?');
     }
 }
 checkAdmin(myRole);
@@ -109,7 +124,7 @@ var myDog = {
     name: 'Cooper',
     age: 7,
     speak: function () {
-        return "bark!";
+        return 'bark!';
     },
     walk: function (distance) {
         console.log("You walked ".concat(this.name, " ").concat(distance, " mile(s)!"));
@@ -127,20 +142,20 @@ var woody = {
 var furby = {
     isFuzzy: false,
     speak: function () {
-        return "You feed me, blehaha blehaha.";
+        return 'You feed me, blehaha blehaha.';
     }
 };
 var taylorSwift = {
-    hairColor: "blonde",
+    hairColor: 'blonde',
     speak: function () {
-        return "Shake it off!";
+        return 'Shake it off!';
     }
 };
 var ben = {
-    hairColor: "Salt-n-Pepper",
+    hairColor: 'Salt-n-Pepper',
     favoriteUnit: 2,
     speak: function () {
-        return "Eeee-yaaaaaaaa *this is the sound of a tarantula bat*";
+        return 'Eeee-yaaaaaaaa *this is the sound of a tarantula bat*';
     }
 };
 printSpeech(myDog);
@@ -148,3 +163,36 @@ printSpeech(taylorSwift);
 printSpeech(woody);
 printSpeech(furby);
 printSpeech(ben);
+var Cat = /** @class */ (function () {
+    function Cat(name, age) {
+        this.name = name;
+        this.age = age;
+        this.createdAt = new Date();
+    }
+    Cat.prototype.describe = function () {
+        return "This is ".concat(this.name, ", they are ").concat(this.age, " years old.");
+    };
+    return Cat;
+}());
+var Kitten = /** @class */ (function (_super) {
+    __extends(Kitten, _super);
+    function Kitten(name, age, favToy) {
+        var _this = _super.call(this, name, age) || this;
+        _this.favToy = favToy;
+        return _this;
+    }
+    Kitten.prototype.describe = function () {
+        return _super.prototype.describe.call(this) + "Their favorite toy is a ".concat(this.favToy, ".");
+    };
+    return Kitten;
+}(Cat));
+// class Kitten extends Cat {
+// 	constructor(name: string, age: number, favToy: string) {
+// 		super(name, age)
+//     this.favToy = favToy
+// 	}
+//   public favToy: string
+// }
+var kitten = new Kitten('Xbox', 1, 'string');
+console.log(kitten);
+console.log(kitten.describe());
